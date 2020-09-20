@@ -6,7 +6,7 @@ import json
 import re
 import xlrd
 
-from typing import List, Set, Dict
+from typing import List, Set, Dict, Tuple
 from collections import defaultdict
 
 
@@ -51,6 +51,15 @@ class Classroom(object):
         for i in range(14):
             for j in range(7):
                 self.schedule[i][j] = self.schedule[i][j].union(other.schedule[i][j])
+
+    def merge_tuple(self, other: Tuple[int, Tuple[int, int], Tuple[Tuple[int, int], int], str]):
+        weeks = set()
+        filtered = other[2][1]
+        for i in range(other[2][0][0], other[2][0][1] + 1):
+            if filtered == 0 or (filtered == 1 and i % 2 == 1) or (filtered == 2 and i % 2 == 0):
+                weeks.add(i)
+        for i in range(other[1][0], other[1][1] + 1):
+            self.schedule[i - 1][other[0]] = self.schedule[i - 1][other[0]].union(weeks)
 
     def is_free(self, week: int, day: int, time: int) -> bool:
         return week not in self.schedule[time][day]
@@ -115,7 +124,72 @@ class Sheet(object):
         return classroom_dict
 
 
-def get_classrooms(sheet_by_room: List[str]) -> List[Classroom]:
+def generate_graduate_schedule_list(graduate_sheet: List[str]) \
+        -> List[Tuple[int, Tuple[int, int], Tuple[Tuple[int, int], int], str]]:
+    schedule_list = []
+    for file in graduate_sheet:
+        workbook = xlrd.open_workbook(file)
+        sheet = workbook.sheet_by_index(0)
+        for i in range(1, sheet.nrows):
+            temp = get_single_graduate_tuple(sheet.row_values(i)[5])
+            if temp:
+                schedule_list.append(temp)
+    return schedule_list
+
+
+def get_single_graduate_tuple(value) -> Tuple[int, Tuple[int, int], Tuple[Tuple[int, int], int], str] | None:
+    if value.strip().startswith('参见'):
+        return None
+    real_data = re.findall(r'^([^;]*)\((\d*-\d*)节\)\[(.*)]', value)
+    if len(real_data) != 1 or len(real_data[0]) != 3:
+        return None
+    real_data = real_data[0]
+    info = real_data[2].split(',')
+    day = day_to_int(real_data[0])
+    graduate_cell = (day, time_to_tuple(real_data[1]),
+                     week_to_tuple(info[0]), location_to_classroom(info[-1]))
+    if day == -1:
+        return None
+    return graduate_cell
+
+
+def day_to_int(day: str) -> int:
+    if len(day) == 0:
+        return -1
+    s = '一二三四五六七'
+    t = day[-1]
+    for index, value in enumerate(s):
+        if t == value:
+            return index
+    return -1
+
+
+def time_to_tuple(time: str) -> Tuple[int, int]:
+    temp = list(map(int, time.split('-')))
+    return temp[0], temp[1]
+
+
+def week_to_tuple(week: str) -> Tuple[Tuple[int, int], int]:
+    week_filter = 0
+    week = week[:-1]
+    if week.endswith('单'):
+        week_filter = 1
+        week = week[:-1]
+    if week.endswith('双'):
+        week_filter = 2
+        week = week[:-1]
+    for week_range in week.split('、'):
+        week_range_list = list(map(int, week_range.split('-')))
+        if len(week_range_list) == 1:
+            return (week_range_list[0], week_range_list[0]), week_filter
+        return (week_range_list[0], week_range_list[1]), week_filter
+
+
+def location_to_classroom(location: str) -> str:
+    return location[3:].replace('经-', '经管楼-')
+
+
+def get_classrooms(sheet_by_room: List[str], graduate_sheet: List[str]) -> List[Classroom]:
     if len(sheet_by_room) < 1:
         return []
     if len(sheet_by_room) == 1:
@@ -129,6 +203,10 @@ def get_classrooms(sheet_by_room: List[str]) -> List[Classroom]:
                 all_classrooms[classroom.name].merge_schedule(classroom)
             else:
                 all_classrooms[classroom.name] = classroom
+    for t in generate_graduate_schedule_list(graduate_sheet):
+        if t[-1] in all_classrooms:
+            all_classrooms[t[-1]].merge_tuple(t)
+
     return list(all_classrooms.values())
 
 
@@ -184,9 +262,11 @@ def get_free_classroom_dict(classroom_dict: Dict[str, List[Classroom]]):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-o", "--output", help="<required> writes our JSON file to this path", required=True)
-    parser.add_argument('-i', '--input', nargs='+', help='<required> input files', required=True)
+    parser.add_argument('-c', '--classroom', nargs='+', help='<required> classroom files', required=True)
+    parser.add_argument('-g', '--graduate', nargs='+', help='<required> classroom files')
     args = parser.parse_args()
-    classrooms = get_classrooms(args.input)
+    graduate = [] if not args.graduate else args.graduate
+    classrooms = get_classrooms(args.classroom, graduate)
     filtered = filter_classrooms(classrooms, function_allow_list=['多媒体'], name_deny_list=['教师自行安排', '网络教室', '体育'])
     result = get_free_classroom_dict(get_classroom_dict(filtered))
     with open(args.output, mode='w', encoding='utf-8') as f:
