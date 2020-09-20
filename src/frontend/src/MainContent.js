@@ -18,7 +18,8 @@ import axios from "axios";
 
 function getDateDiff() {
   const date = new Date();
-  const startDate = Date.parse("2020-08-31");
+  const startDate = new Date("2020-08-31");
+  startDate.setTime(startDate.getTime() + date.getTimezoneOffset() * 60 * 1000);
   return Math.floor((date - startDate) / (24 * 3600 * 1000));
 }
 
