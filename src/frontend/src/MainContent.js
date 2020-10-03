@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Alert,
   ButtonToolbar,
   ButtonGroup,
   Card,
@@ -15,6 +16,24 @@ import {
   FormCheckbox,
 } from "shards-react";
 import axios from "axios";
+
+const specialDate = [
+  "2020-10-04",
+  "2020-10-10",
+  "2020-10-17",
+  "2020-10-24",
+  "2020-10-31",
+  "2020-11-07",
+  "2020-11-14",
+  "2020-11-28",
+  "2020-12-05",
+  "2020-12-19",
+].map((date) => new Date(date).toDateString());
+
+function checkSpecialDate() {
+  const today = new Date();
+  return specialDate.indexOf(today.toDateString());
+}
 
 function getDateDiff() {
   const date = new Date();
@@ -52,6 +71,25 @@ function getTime() {
   return 1;
 }
 
+function getWeek(dateDiff) {
+  const index = checkSpecialDate();
+  if (index !== -1) {
+    if (index < 5) {
+      return 17;
+    }
+    return 18;
+  }
+  return Math.floor(dateDiff / 7) + 1;
+}
+
+function getDay(dateDiff) {
+  const index = checkSpecialDate();
+  if (index !== -1) {
+    return (index % 5) + 1;
+  }
+  return Math.floor(dateDiff % 7) + 1;
+}
+
 class MainContent extends React.Component {
   constructor(props) {
     super(props);
@@ -59,8 +97,8 @@ class MainContent extends React.Component {
     this.state = {
       single: true,
       selected: Array(15).fill(false),
-      week: "" + (Math.floor(dateDiff / 7) + 1),
-      day: "" + (Math.floor(dateDiff % 7) + 1),
+      week: "" + getWeek(dateDiff),
+      day: "" + getDay(dateDiff),
       time: "" + getTime(),
       result: [],
     };
@@ -272,10 +310,24 @@ class MainContent extends React.Component {
     );
   }
 
+  renderAlert() {
+    if (checkSpecialDate() !== -1) {
+      return (
+        <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
+          <Alert theme="primary">
+            <b>按照教务处通知，今日补课</b>
+          </Alert>
+        </Col>
+      );
+    }
+    return <></>;
+  }
+
   render() {
     return (
       <Container className="mt-3 mb-4">
         <Row>
+          {this.renderAlert()}
           <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
             <Card>
               <CardBody>
