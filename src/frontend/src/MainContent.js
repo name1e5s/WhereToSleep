@@ -154,20 +154,24 @@ class MainContent extends React.Component {
   }
 
   getNewResult() {
-    const url =
-      "http://name1e5s.fun:4514/free_classrooms?week=" +
-      this.state.week +
-      "&day=" +
-      this.state.day +
-      this.getTimeString();
-    axios
-      .get(url)
-      .then((res) => {
-        this.setState({ result: res.data });
-      })
-      .catch((error) => {
-        alert("查询出错.");
-      });
+    if (!this.state.single && !this.state.selected.reduce((a, b) => a || b)) {
+      alert("请至少点选一个时间段");
+    } else {
+      const url =
+        "http://name1e5s.fun:4514/free_classrooms?week=" +
+        this.state.week +
+        "&day=" +
+        this.state.day +
+        this.getTimeString();
+      axios
+        .get(url)
+        .then((res) => {
+          this.setState({ result: res.data });
+        })
+        .catch((error) => {
+          alert("网络故障\nPS：最近校园网不稳定，可以切换到流量后再试试");
+        });
+    }
   }
 
   renderButton(i) {
