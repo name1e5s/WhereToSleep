@@ -12,6 +12,7 @@ from starlette.status import HTTP_404_NOT_FOUND
 from typing import List, Tuple, Dict
 
 decoded_data = {}
+jwgl_data = {}
 
 
 def to_tuple(data: Dict) -> Tuple[str, str, str]:
@@ -19,7 +20,7 @@ def to_tuple(data: Dict) -> Tuple[str, str, str]:
 
 
 def load_data():
-    global decoded_data
+    global decoded_data, jwgl_data
     if 'SLEEP_LIST' not in os.environ:
         raise Exception('SLEEP_LIST is not defined.')
     with open(os.environ['SLEEP_LIST'], mode='r', encoding='utf-8') as f:
@@ -29,6 +30,15 @@ def load_data():
         for k_2, v_2 in v.items():
             temp[k_2] = list(map(to_tuple, v_2))
         decoded_data[k] = temp
+
+    if 'JWGL_LIST' in os.environ:
+        with open(os.environ['JWGL_LIST'], mode='r', encoding='utf-8') as f:
+            data = json.load(f)
+        for k, v in data.items():
+            temp = {}
+            for k_2, v_2 in v.items():
+                temp[k_2] = list(map(to_tuple, v_2))
+            jwgl_data[k] = temp
 
 
 app = FastAPI()
@@ -68,6 +78,16 @@ async def read_item(week: int = 3, day: int = 1, time: List[int] = Query(None)):
     return dict_to_list(data)
 
 
+@app.get("/free_classrooms_jwgl")
+async def read_item(week: int = 3, day: int = 1, time: List[int] = Query(None)):
+    if week > 18 or week < 1 or day > 7 or day < 1 or not check_time(time):
+        raise HTTPException(
+            status_code=HTTP_404_NOT_FOUND, detail=f"Week {week}; day {day}; time {time} not found"
+        )
+    data = merge_data(get_data_jwgl(week, day, time))
+    return dict_to_list(data)
+
+
 def get_data(week: int, day: int, time) -> List:
     week_str = '%02d' % week
     day_str = '%d' % (day - 1)
@@ -76,6 +96,18 @@ def get_data(week: int, day: int, time) -> List:
         time_str = '%02d' % (i - 1)
         key = week_str + '.' + day_str + '.' + time_str
         result.append(decoded_data[key])
+    return result
+
+
+def get_data_jwgl(week: int, day: int, time) -> List:
+    week_str = '%02d' % week
+    day_str = '%d' % (day - 1)
+    result = []
+    for i in time:
+        time_str = '%02d' % (i - 1)
+        key = week_str + '.' + day_str + '.' + time_str
+        if key in jwgl_data:
+            result.append(jwgl_data[key])
     return result
 
 

@@ -22,7 +22,6 @@ const specialDate = [
   "2020-10-10",
   "2020-10-17",
   "2020-10-24",
-  "2020-10-31",
   "2020-11-07",
   "2020-11-14",
   "2020-11-28",
@@ -95,7 +94,7 @@ class MainContent extends React.Component {
     super(props);
     const dateDiff = getDateDiff();
     this.state = {
-      single: true,
+      jwgl: true,
       selected: Array(15).fill(false),
       week: "" + getWeek(dateDiff),
       day: "" + getDay(dateDiff),
@@ -136,29 +135,28 @@ class MainContent extends React.Component {
   }
 
   rangeChecked() {
-    this.setState({ single: !this.state.single });
+    this.setState({ jwgl: !this.state.jwgl });
   }
 
   getTimeString() {
-    if (this.state.single) {
-      return "&time=" + this.state.time;
-    } else {
-      var time_string = "";
-      for (var i = 0; i < 15; i++) {
-        if (this.state.selected[i]) {
-          time_string += "&time=" + i;
-        }
+    var time_string = "";
+    for (var i = 0; i < 15; i++) {
+      if (this.state.selected[i]) {
+        time_string += "&time=" + i;
       }
-      return time_string;
     }
+    return time_string;
   }
 
   getNewResult() {
-    if (!this.state.single && !this.state.selected.reduce((a, b) => a || b)) {
+    if (!this.state.selected.reduce((a, b) => a || b)) {
       alert("请至少点选一个时间段");
     } else {
+      const prefix = this.state.jwgl
+        ? "http://name1e5s.fun:4514/free_classrooms_jwgl?week="
+        : "http://name1e5s.fun:4514/free_classrooms?week=";
       const url =
-        "http://name1e5s.fun:4514/free_classrooms?week=" +
+        prefix +
         this.state.week +
         "&day=" +
         this.state.day +
@@ -167,6 +165,9 @@ class MainContent extends React.Component {
         .get(url)
         .then((res) => {
           this.setState({ result: res.data });
+          if(res.data.length == 0) {
+            alert("暂无空教室\nPS：教务处的空教室信息每晚零点自动更新");
+          }
         })
         .catch((error) => {
           alert("网络故障\nPS：最近校园网不稳定，可以切换到流量后再试试");
@@ -279,7 +280,7 @@ class MainContent extends React.Component {
   }
 
   renderTime() {
-    if (!this.state.single) {
+    if (true) {
       return (
         <FormGroup>
           <label htmlFor="time">节次</label>
@@ -337,13 +338,13 @@ class MainContent extends React.Component {
               <CardBody>
                 <Form>
                   <FormGroup>
-                    <label htmlFor="mode">模式</label>
+                    <label htmlFor="mode">数据来源</label>
                     <FormCheckbox
                       toggle
-                      checked={!this.state.single}
+                      checked={this.state.jwgl}
                       onChange={this.rangeChecked}
                     >
-                      {this.state.single ? "单节查询" : "范围查询"}
+                      {this.state.jwgl ? "教务系统" : "课表"}
                     </FormCheckbox>
                   </FormGroup>
                   <FormGroup>
