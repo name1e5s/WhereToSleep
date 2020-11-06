@@ -114,6 +114,14 @@ function getDay(dateDiff) {
   return Math.floor(dateDiff % 7) + 1;
 }
 
+function getRealWeek(dateDiff) {
+  return Math.floor(dateDiff / 7) + 1;
+}
+
+function getRealDay(dateDiff) {
+  return Math.floor(dateDiff % 7) + 1;
+}
+
 class MainContent extends React.Component {
   constructor(props) {
     super(props);
@@ -123,6 +131,8 @@ class MainContent extends React.Component {
       selected: getDefaultSelectedArray(),
       week: "" + getWeek(dateDiff),
       day: "" + getDay(dateDiff),
+      realWeek: "" + getRealWeek(dateDiff),
+      realDay: "" + getRealDay(dateDiff),
       time: "" + getTime(),
       result: [],
     };
@@ -180,11 +190,13 @@ class MainContent extends React.Component {
       const prefix = this.state.jwgl
         ? "http://name1e5s.fun:4514/free_classrooms_jwgl?week="
         : "http://name1e5s.fun:4514/free_classrooms?week=";
+      const week = this.state.jwgl ? this.state.realWeek : this.state.week;
+      const day = this.state.jwgl ? this.state.realDay : this.state.day;
       const url =
         prefix +
-        this.state.week +
+        week +
         "&day=" +
-        this.state.day +
+        day +
         this.getTimeString();
       axios
         .get(url)
@@ -345,7 +357,7 @@ class MainContent extends React.Component {
       return (
         <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
           <Alert theme="primary">
-            <b>按照教务处通知，今日补课</b>
+            <b>今日补课 - 请使用课表数据查询今日空闲教室</b>
           </Alert>
         </Col>
       );
