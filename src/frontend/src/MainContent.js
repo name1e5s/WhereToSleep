@@ -70,6 +70,31 @@ function getTime() {
   return 1;
 }
 
+function getEndTime(startTime) {
+  if (startTime < 5) {
+    return 5;
+  }
+  if (startTime < 9) {
+    return 9;
+  }
+  if (startTime < 11) {
+    return 11;
+  }
+  return 14;
+}
+
+function getDefaultSelectedArray() {
+  const startTime = getTime();
+  const endTime = getEndTime(startTime);
+  var selectedArray = Array(15).fill(false);
+  for (var i = 1; i < 15; i += 1) {
+    if (i >= startTime && i <= endTime) {
+      selectedArray[i] = true;
+    }
+  }
+  return selectedArray;
+}
+
 function getWeek(dateDiff) {
   const index = checkSpecialDate();
   if (index !== -1) {
@@ -95,7 +120,7 @@ class MainContent extends React.Component {
     const dateDiff = getDateDiff();
     this.state = {
       jwgl: true,
-      selected: Array(15).fill(false),
+      selected: getDefaultSelectedArray(),
       week: "" + getWeek(dateDiff),
       day: "" + getDay(dateDiff),
       time: "" + getTime(),
@@ -165,7 +190,7 @@ class MainContent extends React.Component {
         .get(url)
         .then((res) => {
           this.setState({ result: res.data });
-          if(res.data.length == 0) {
+          if (res.data.length === 0) {
             alert("暂无空教室\nPS：教务处的空教室信息每晚零点自动更新");
           }
         })
