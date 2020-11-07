@@ -203,7 +203,7 @@ class MainContent extends React.Component {
         .then((res) => {
           this.setState({ result: res.data });
           if (res.data.length === 0) {
-            alert("暂无空教室\nPS：教务处的空教室信息每晚零点自动更新");
+            alert("暂无空教室，试试课表数据吧\nPS：教务系统的空教室信息每晚零点自动更新");
           }
         })
         .catch((error) => {
