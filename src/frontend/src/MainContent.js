@@ -23,10 +23,6 @@ const specialDate = [
   "2020-10-17",
   "2020-10-24",
   "2020-11-07",
-  "2020-11-14",
-  "2020-11-28",
-  "2020-12-05",
-  "2020-12-19",
 ].map((date) => new Date(date).toDateString());
 
 function checkSpecialDate() {
