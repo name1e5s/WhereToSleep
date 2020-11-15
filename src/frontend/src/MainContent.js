@@ -123,6 +123,7 @@ class MainContent extends React.Component {
     super(props);
     const dateDiff = getDateDiff();
     this.state = {
+      jwgl_has_data: false,
       jwgl: checkSpecialDate() === -1 ? true : false,
       selected: getDefaultSelectedArray(),
       week: "" + getWeek(dateDiff),
@@ -132,6 +133,12 @@ class MainContent extends React.Component {
       time: "" + getTime(),
       result: [],
     };
+
+    const jwgl_status_url = "http://name1e5s.fun:4514/jwgl_has_data";
+    axios.get(jwgl_status_url).then((res) => {
+      this.setState({ jwgl_has_data: res.data.result });
+      this.setState({ jwgl: res.data.result });
+    });
 
     this.setWeek = this.setWeek.bind(this);
     this.setDay = this.setDay.bind(this);
@@ -166,7 +173,9 @@ class MainContent extends React.Component {
   }
 
   rangeChecked() {
-    this.setState({ jwgl: !this.state.jwgl });
+    if (this.jwgl_has_data) {
+      this.setState({ jwgl: !this.state.jwgl });
+    }
   }
 
   getTimeString() {
@@ -188,18 +197,15 @@ class MainContent extends React.Component {
         : "http://name1e5s.fun:4514/free_classrooms?week=";
       const week = this.state.jwgl ? this.state.realWeek : this.state.week;
       const day = this.state.jwgl ? this.state.realDay : this.state.day;
-      const url =
-        prefix +
-        week +
-        "&day=" +
-        day +
-        this.getTimeString();
+      const url = prefix + week + "&day=" + day + this.getTimeString();
       axios
         .get(url)
         .then((res) => {
           this.setState({ result: res.data });
           if (res.data.length === 0) {
-            alert("暂无空教室，试试课表数据吧\nPS：教务系统的空教室信息每晚零点自动更新");
+            alert(
+              "暂无空教室，试试课表数据吧\nPS：教务系统的空教室信息每晚零点自动更新"
+            );
           }
         })
         .catch((error) => {
@@ -349,11 +355,11 @@ class MainContent extends React.Component {
   }
 
   renderAlert() {
-    if (checkSpecialDate() !== -1) {
+    if (!this.state.jwgl_has_data) {
       return (
         <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
-          <Alert theme="primary">
-            <b>今日补课 - 请使用课表数据查询今日空闲教室</b>
+          <Alert theme="warning">
+            <b>教务系统崩了 - 请使用课表数据查找空闲教室</b>
           </Alert>
         </Col>
       );
@@ -375,6 +381,7 @@ class MainContent extends React.Component {
                     <FormCheckbox
                       toggle
                       checked={this.state.jwgl}
+                      disabled={!this.state.jwgl_has_data}
                       onChange={this.rangeChecked}
                     >
                       {this.state.jwgl ? "教务系统" : "课表"}
