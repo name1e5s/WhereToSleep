@@ -123,7 +123,7 @@ class MainContent extends React.Component {
     super(props);
     const dateDiff = getDateDiff();
     this.state = {
-      jwgl_has_data: false,
+      jwgl_has_data: true,
       jwgl: checkSpecialDate() === -1 ? true : false,
       selected: getDefaultSelectedArray(),
       week: "" + getWeek(dateDiff),
