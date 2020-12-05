@@ -173,7 +173,7 @@ class MainContent extends React.Component {
   }
 
   rangeChecked() {
-    if (this.jwgl_has_data) {
+    if (this.state.jwgl_has_data) {
       this.setState({ jwgl: !this.state.jwgl });
     }
   }
