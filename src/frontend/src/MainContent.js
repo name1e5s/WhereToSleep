@@ -359,7 +359,7 @@ class MainContent extends React.Component {
       return (
         <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
           <Alert theme="warning">
-            <b>教务系统崩了 - 请使用课表数据查找空闲教室</b>
+            <b>教务系统本周起已无法查看本学期空闲教室 - 请使用课表数据</b>
           </Alert>
         </Col>
       );
