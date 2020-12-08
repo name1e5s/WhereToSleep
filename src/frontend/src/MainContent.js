@@ -204,7 +204,7 @@ class MainContent extends React.Component {
           this.setState({ result: res.data });
           if (res.data.length === 0) {
             alert(
-              "暂无空教室，试试课表数据吧\nPS：教务系统的空教室信息每晚零点自动更新"
+              "暂无空教室，试试课表/考表数据吧\nPS：教务系统的空教室信息每晚零点自动更新"
             );
           }
         })
@@ -359,7 +359,7 @@ class MainContent extends React.Component {
       return (
         <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
           <Alert theme="warning">
-            <b>教务系统本周起已无法查看本学期空闲教室 - 请使用课表数据</b>
+            <b>教务系统崩了 - 请使用课表数据</b>
           </Alert>
         </Col>
       );
@@ -373,6 +373,11 @@ class MainContent extends React.Component {
         <Row>
           {this.renderAlert()}
           <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
+            <Alert theme="primary">
+              <b>考表数据已更新。祝大家期末顺利、考研上岸！</b>
+            </Alert>
+          </Col>
+          <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
             <Card>
               <CardBody>
                 <Form>
@@ -384,7 +389,7 @@ class MainContent extends React.Component {
                       disabled={!this.state.jwgl_has_data}
                       onChange={this.rangeChecked}
                     >
-                      {this.state.jwgl ? "教务系统" : "课表"}
+                      {this.state.jwgl ? "教务系统" : "课表/考表"}
                     </FormCheckbox>
                   </FormGroup>
                   <FormGroup>
