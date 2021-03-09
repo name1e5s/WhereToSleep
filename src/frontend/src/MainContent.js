@@ -32,7 +32,7 @@ function checkSpecialDate() {
 
 function getDateDiff() {
   const date = new Date();
-  const startDate = new Date("2020-08-31");
+  const startDate = new Date("2021-03-01");
   startDate.setTime(startDate.getTime() + date.getTimezoneOffset() * 60 * 1000);
   return Math.floor((date - startDate) / (24 * 3600 * 1000));
 }
@@ -372,11 +372,6 @@ class MainContent extends React.Component {
       <Container className="mt-3 mb-4">
         <Row>
           {this.renderAlert()}
-          <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
-            <Alert theme="primary">
-              <b>考表数据已更新。祝大家期末顺利、考研上岸！</b>
-            </Alert>
-          </Col>
           <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
             <Card>
               <CardBody>
