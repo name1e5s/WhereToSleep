@@ -176,6 +176,9 @@ class MainContent extends React.Component {
     if (this.state.jwgl_has_data) {
       this.setState({ jwgl: !this.state.jwgl });
     }
+    const dateDiff = getDateDiff();
+    this.setWeek("" + getWeek(dateDiff),);
+    this.setDay("" + getDay(dateDiff),);
   }
 
   getTimeString() {
@@ -392,7 +395,12 @@ class MainContent extends React.Component {
                     <FormSelect
                       id="week"
                       value={this.state.week}
-                      onChange={(e) => this.setWeek(e.target.value)}
+                      disabled={this.state.jwgl}
+                      onChange={(e) => {
+                        if(!this.state.jwgl) {
+                          this.setWeek(e.target.value)
+                        }
+                      }}
                     >
                       <option value="1">第 1 周</option>
                       <option value="2">第 2 周</option>
@@ -419,7 +427,12 @@ class MainContent extends React.Component {
                     <FormSelect
                       id="day"
                       value={this.state.day}
-                      onChange={(e) => this.setDay(e.target.value)}
+                      disabled={this.state.jwgl}
+                      onChange={(e) => {
+                        if(!this.state.jwgl) {
+                          this.setDay(e.target.value)
+                        }
+                      }}
                     >
                       <option value="1">周一</option>
                       <option value="2">周二</option>
