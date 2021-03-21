@@ -134,7 +134,7 @@ class MainContent extends React.Component {
       result: [],
     };
 
-    const jwgl_status_url = "http://name1e5s.fun:4514/jwgl_has_data";
+    const jwgl_status_url = "https://name1e5s.fun:4514/jwgl_has_data";
     axios.get(jwgl_status_url).then((res) => {
       this.setState({ jwgl_has_data: res.data.result });
       this.setState({ jwgl: res.data.result });
@@ -193,8 +193,8 @@ class MainContent extends React.Component {
       alert("请至少点选一个时间段");
     } else {
       const prefix = this.state.jwgl
-        ? "http://name1e5s.fun:4514/free_classrooms_jwgl?week="
-        : "http://name1e5s.fun:4514/free_classrooms?week=";
+        ? "https://name1e5s.fun:4514/free_classrooms_jwgl?week="
+        : "https://name1e5s.fun:4514/free_classrooms?week=";
       const week = this.state.jwgl ? this.state.realWeek : this.state.week;
       const day = this.state.jwgl ? this.state.realDay : this.state.day;
       const url = prefix + week + "&day=" + day + this.getTimeString();
