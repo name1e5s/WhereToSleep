@@ -1,0 +1,1046 @@
+﻿{
+    "nodes": [
+      {
+        "id": "0",
+        "name": "原来你还在这里",
+        "symbolSize": 30,
+        "x": -87.93029,
+        "y": -216.8120565,
+        "value": 100,
+        "category": 1
+      },
+      {
+        "id": "1",
+        "name": "无心法师",
+        "symbolSize": 30,
+        "x": -208.08344,
+        "y": -10.8853,
+        "value": 100,
+        "category": 0
+      },
+      {
+        "id": "2",
+        "name": "仙剑奇侠传三",
+        "symbolSize": 30,
+        "x": 68.76357,
+        "y": 92.29176,
+        "value": 100,
+        "category": 0
+      },
+      {
+        "id": "3",
+        "name": "三生三世十里桃花",
+        "symbolSize": 30,
+        "x": 12.82404,
+        "y": -250.26283,
+        "value": 100,
+        "category": 0
+      },
+      {
+        "id": "4",
+        "name": "三生三世枕上书",
+        "symbolSize": 30,
+        "x": -139.30386,
+        "y": 129.06424,
+        "value": 100,
+        "category": 0
+      },
+      {
+        "id": "5",
+        "name": "何以笙箫默",
+        "symbolSize": 30,
+        "x": 217.26337,
+        "y": -16.03506,
+        "value": 100,
+        "category": 1
+      },
+      {
+        "id": "6",
+        "name": "三十而已",
+        "symbolSize": 30,
+        "x": 32.6012,
+        "y": -145.16974,
+        "value": 100,
+        "category": 1
+      },
+      {
+        "id": "7",
+        "name": "林玉芬",
+        "symbolSize": 15,
+        "x": -382.69568,
+        "y": 475.09113,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "8",
+        "name": "高林豹",
+        "symbolSize": 15,
+        "x": -320.384,
+        "y": 387.17325,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "9",
+        "name": "李国立",
+        "symbolSize": 15,
+        "x": -344.39832,
+        "y": 451.16772,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "10",
+        "name": "梁胜权",
+        "symbolSize": 15,
+        "x": -89.34107,
+        "y": 534.56128,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "11",
+        "name": "黄俊文",
+        "symbolSize": 15,
+        "x": -100.93029,
+        "y": 426.8120565,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "12",
+        "name": "余翠华",
+        "symbolSize": 15,
+        "x": -122.41348,
+        "y": 510.37503,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "13",
+        "name": "任海涛",
+        "symbolSize": 15,
+        "x": -194.31313,
+        "y": 478.55301,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "14",
+        "name": "杨玄",
+        "symbolSize": 15,
+        "x": -158.05168,
+        "y": 401.99768,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "15",
+        "name": "刘俊杰",
+        "symbolSize": 15,
+        "x": -127.701546,
+        "y": 542.55057,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "16",
+        "name": "张晓波",
+        "symbolSize": 15,
+        "x": -225.73984,
+        "y": 482.41631,
+        "value": 10,
+        "category": 2
+      },
+      {
+        "id": "17",
+        "name": "金国栋",
+        "symbolSize": 15,
+        "x": -516.55884,
+        "y": -393.98975,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "18",
+        "name": "徐子沅",
+        "symbolSize": 15,
+        "x": -464.79382,
+        "y": -493.57944,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "19",
+        "name": "肖志瑶",
+        "symbolSize": 15,
+        "x": -515.1624,
+        "y": -456.9891,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "20",
+        "name": "李楠",
+        "symbolSize": 15,
+        "x": -408.12122,
+        "y": -464.5048,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "21",
+        "name": "方羌羌",
+        "symbolSize": 15,
+        "x": -456.44113,
+        "y": -425.13303,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "22",
+        "name": "邓紫珊",
+        "symbolSize": 15,
+        "x": -459.1107,
+        "y": -362.5133,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "23",
+        "name": "弘伙",
+        "symbolSize": 15,
+        "x": -313.42786,
+        "y": -289.44803,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "24",
+        "name": "梁振华",
+        "symbolSize": 15,
+        "x": -74.6313396,
+        "y": -273.8517,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "25",
+        "name": "胡雅婷",
+        "symbolSize": 15,
+        "x": -182.80825,
+        "y": -403.1144,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "26",
+        "name": "顾漫",
+        "symbolSize": 15,
+        "x": -378.64646,
+        "y": -431.512747,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "27",
+        "name": "墨宝非宝",
+        "symbolSize": 15,
+        "x": -181.46074,
+        "y": -304.20204,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "28",
+        "name": "张英姬",
+        "symbolSize": 15,
+        "x": -385.2226,
+        "y": -393.5572,
+        "value": 10,
+        "category": 3
+      },
+      {
+        "id": "29",
+        "name": "蔡艺侬",
+        "symbolSize": 15,
+        "x": -385.6842,
+        "y": -20.206686,
+        "value": 10,
+        "category": 4
+      },
+      {
+        "id": "30",
+        "name": "赵洁",
+        "symbolSize": 15,
+        "x": -403.92447,
+        "y": -197.69823,
+        "value": 10,
+        "category": 4
+      },
+      {
+        "id": "31",
+        "name": "高琛",
+        "symbolSize": 15,
+        "x": -281.4253,
+        "y": -158.45137,
+        "value": 10,
+        "category": 4
+      },
+      {
+        "id": "32",
+        "name": "房迎",
+        "symbolSize": 15,
+        "x": -339.77908,
+        "y": -184.69139,
+        "value": 10,
+        "category": 4
+      },
+      {
+        "id": "33",
+        "name": "陈菲",
+        "symbolSize": 15,
+        "x": -234.6001,
+        "y": -113.15067,
+        "value": 10,
+        "category": 4
+      },
+      {
+        "id": "34",
+        "name": "徐晓鸥",
+        "symbolSize": 15,
+        "x": -387.84915,
+        "y": 58.7059,
+        "value": 10,
+        "category": 4
+      },
+      {
+        "id": "35",
+        "name": "杨子姗",
+        "symbolSize": 15,
+        "x": 338.2307,
+        "y": 87.48405,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "36",
+        "name": "韩东君",
+        "symbolSize": 15,
+        "x": 753.26874,
+        "y": 58.94648,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "37",
+        "name": "李程彬",
+        "symbolSize": 15,
+        "x": 486.44904,
+        "y": 140.05937,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "38",
+        "name": "苏青",
+        "symbolSize": 15,
+        "x": 946.7876,
+        "y": 123.38005,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "39",
+        "name": "蓝盈莹",
+        "symbolSize": 15,
+        "x": 336.49738,
+        "y": -269.55914,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "40",
+        "name": "檀健次",
+        "symbolSize": 15,
+        "x": 229.187843,
+        "y": -460.13132,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "41",
+        "name": "温心",
+        "symbolSize": 15,
+        "x": 238.36697,
+        "y": -210.00926,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "42",
+        "name": "李兰迪",
+        "symbolSize": 15,
+        "x": 189.69513,
+        "y": -346.50662,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "43",
+        "name": "高圣远",
+        "symbolSize": 15,
+        "x": 187.00418,
+        "y": -145.02663,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "44",
+        "name": "胡先煦",
+        "symbolSize": 15,
+        "x": 252.99521,
+        "y": 129.87549,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "45",
+        "name": "金晨",
+        "symbolSize": 15,
+        "x": 296.07935,
+        "y": 163.11964,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "46",
+        "name": "陈瑶",
+        "symbolSize": 15,
+        "x": 550.3201,
+        "y": 522.4031,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "47",
+        "name": "张若昀",
+        "symbolSize": 15,
+        "x": 488.13535,
+        "y": 356.8573,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "48",
+        "name": "王彦霖",
+        "symbolSize": 15,
+        "x": 387.89572,
+        "y": 110.462326,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "49",
+        "name": "Mike",
+        "symbolSize": 15,
+        "x": 126.4831,
+        "y": 168.10622,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "50",
+        "name": "胡歌",
+        "symbolSize": 15,
+        "x": 127.07365,
+        "y": -313.05923,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "51",
+        "name": "霍建华",
+        "symbolSize": 15,
+        "x": 162.63559,
+        "y": 317.6565,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "52",
+        "name": "杨幂",
+        "symbolSize": 15,
+        "x": 353.66415,
+        "y": -205.89165,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "53",
+        "name": "刘诗诗",
+        "symbolSize": 15,
+        "x": 165.43939,
+        "y": 339.7736,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "54",
+        "name": "唐嫣",
+        "symbolSize": 15,
+        "x": 137.69348,
+        "y": 496.1069,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "55",
+        "name": "赵又廷",
+        "symbolSize": 15,
+        "x": 206.44687,
+        "y": -413.805411,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "56",
+        "name": "张智尧",
+        "symbolSize": 15,
+        "x": 194.82993,
+        "y": 324.78036,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "57",
+        "name": "迪丽热巴",
+        "symbolSize": 15,
+        "x": 597.6618,
+        "y": 275.18481,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "58",
+        "name": "高伟光",
+        "symbolSize": 15,
+        "x": 355.78366,
+        "y": -74.882454,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "59",
+        "name": "黄梦莹",
+        "symbolSize": 15,
+        "x": 515.2961,
+        "y": -46.167564,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "60",
+        "name": "张彬彬",
+        "symbolSize": 15,
+        "x": 614.29285,
+        "y": -69.3104,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "61",
+        "name": "于朦胧",
+        "symbolSize": 15,
+        "x": 550.1917,
+        "y": -128.17537,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "62",
+        "name": "刘芮麟",
+        "symbolSize": 15,
+        "x": 436.17184,
+        "y": -12.7286825,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "63",
+        "name": "王骁",
+        "symbolSize": 15,
+        "x": 602.55225,
+        "y": 16.421427,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "64",
+        "name": "陈楚河",
+        "symbolSize": 15,
+        "x": 455.81955,
+        "y": -115.45826,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "65",
+        "name": "郭品超",
+        "symbolSize": 15,
+        "x": 516.40784,
+        "y": 47.242233,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "66",
+        "name": "刘玥霏",
+        "symbolSize": 15,
+        "x": 646.4313,
+        "y": -151.06331,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "67",
+        "name": "钟汉良",
+        "symbolSize": 15,
+        "x": 668.9568,
+        "y": 204.65488,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "68",
+        "name": "谭凯",
+        "symbolSize": 15,
+        "x": 278.4799,
+        "y": -347.15146,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "69",
+        "name": "杨玏",
+        "symbolSize": 15,
+        "x": 150.35959,
+        "y": -298.50797,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "70",
+        "name": "菅纫姿",
+        "symbolSize": 15,
+        "x": 137.3717,
+        "y": -410.2809,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "71",
+        "name": "米露",
+        "symbolSize": 15,
+        "x": 234.87747,
+        "y": -400.85983,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "72",
+        "name": "江疏影",
+        "symbolSize": 15,
+        "x": 540.942253,
+        "y": 213.78272,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "73",
+        "name": "童瑶",
+        "symbolSize": 15,
+        "x": 437.939,
+        "y": 291.58234,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "74",
+        "name": "毛晓彤",
+        "symbolSize": 15,
+        "x": 466.04922,
+        "y": 283.3606,
+        "value": 10,
+        "category": 5
+      },
+      {
+        "id": "75",
+        "name": "李泽锋",
+        "symbolSize": 15,
+        "x": 238.79364,
+        "y": -314.06345,
+        "value": 10,
+        "category": 5
+      }
+    ],
+    "links": [
+      {
+        "source": "7",
+        "target": "0"
+      },
+      {
+        "source": "17",
+        "target": "0"
+      },
+      {
+        "source": "29",
+        "target": "0"
+      },
+      {
+        "source": "35",
+        "target": "0"
+      },
+      {
+        "source": "36",
+        "target": "0"
+      },
+      {
+        "source": "37",
+        "target": "0"
+      },
+      {
+        "source": "38",
+        "target": "0"
+      },
+      {
+        "source": "39",
+        "target": "0"
+      },
+      {
+        "source": "40",
+        "target": "0"
+      },
+      {
+        "source": "41",
+        "target": "0"
+      },
+      {
+        "source": "42",
+        "target": "0"
+      },
+      {
+        "source": "43",
+        "target": "0"
+      },
+      {
+        "source": "44",
+        "target": "0"
+      },
+      {
+        "source": "7",
+        "target": "1"
+      },
+      {
+        "source": "8",
+        "target": "1"
+      },
+      {
+        "source": "9",
+        "target": "1"
+      },
+      {
+        "source": "18",
+        "target": "1"
+      },
+      {
+        "source": "19",
+        "target": "1"
+      },
+      {
+        "source": "20",
+        "target": "1"
+      },
+      {
+        "source": "21",
+        "target": "1"
+      },
+      {
+        "source": "29",
+        "target": "1"
+      },
+      {
+        "source": "36",
+        "target": "1"
+      },
+      {
+        "source": "45",
+        "target": "1"
+      },
+      {
+        "source": "46",
+        "target": "1"
+      },
+      {
+        "source": "47",
+        "target": "1"
+      },
+      {
+        "source": "48",
+        "target": "1"
+      },
+      {
+        "source": "49",
+        "target": "1"
+      },
+      {
+        "source": "9",
+        "target": "2"
+      },
+      {
+        "source": "10",
+        "target": "2"
+      },
+      {
+        "source": "7",
+        "target": "2"
+      },
+      {
+        "source": "11",
+        "target": "2"
+      },
+      {
+        "source": "22",
+        "target": "2"
+      },
+      {
+        "source": "29",
+        "target": "2"
+      },
+      {
+        "source": "50",
+        "target": "2"
+      },
+      {
+        "source": "51",
+        "target": "2"
+      },
+      {
+        "source": "52",
+        "target": "2"
+      },
+      {
+        "source": "53",
+        "target": "2"
+      },
+      {
+        "source": "54",
+        "target": "2"
+      },
+      {
+        "source": "7",
+        "target": "3"
+      },
+      {
+        "source": "12",
+        "target": "3"
+      },
+      {
+        "source": "13",
+        "target": "3"
+      },
+      {
+        "source": "23",
+        "target": "3"
+      },
+      {
+        "source": "52",
+        "target": "3"
+      },
+      {
+        "source": "55",
+        "target": "3"
+      },
+      {
+        "source": "56",
+        "target": "3"
+      },
+      {
+        "source": "57",
+        "target": "3"
+      },
+      {
+        "source": "58",
+        "target": "3"
+      },
+      {
+        "source": "59",
+        "target": "3"
+      },
+      {
+        "source": "60",
+        "target": "3"
+      },
+      {
+        "source": "61",
+        "target": "3"
+      },
+      {
+        "source": "62",
+        "target": "3"
+      },
+      {
+        "source": "63",
+        "target": "3"
+      },
+      {
+        "source": "14",
+        "target": "4"
+      },
+      {
+        "source": "24",
+        "target": "4"
+      },
+      {
+        "source": "25",
+        "target": "4"
+      },
+      {
+        "source": "30",
+        "target": "4"
+      },
+      {
+        "source": "31",
+        "target": "4"
+      },
+      {
+        "source": "57",
+        "target": "4"
+      },
+      {
+        "source": "58",
+        "target": "4"
+      },
+      {
+        "source": "64",
+        "target": "4"
+      },
+      {
+        "source": "65",
+        "target": "4"
+      },
+      {
+        "source": "66",
+        "target": "4"
+      },
+      {
+        "source": "62",
+        "target": "4"
+      },
+      {
+        "source": "63",
+        "target": "4"
+      },
+      {
+        "source": "15",
+        "target": "5"
+      },
+      {
+        "source": "26",
+        "target": "5"
+      },
+      {
+        "source": "27",
+        "target": "5"
+      },
+      {
+        "source": "17",
+        "target": "5"
+      },
+      {
+        "source": "32",
+        "target": "5"
+      },
+      {
+        "source": "67",
+        "target": "5"
+      },
+      {
+        "source": "54",
+        "target": "5"
+      },
+      {
+        "source": "68",
+        "target": "5"
+      },
+      {
+        "source": "69",
+        "target": "5"
+      },
+      {
+        "source": "70",
+        "target": "5"
+      },
+      {
+        "source": "71",
+        "target": "5"
+      },
+      {
+        "source": "16",
+        "target": "6"
+      },
+      {
+        "source": "28",
+        "target": "6"
+      },
+      {
+        "source": "33",
+        "target": "6"
+      },
+      {
+        "source": "34",
+        "target": "6"
+      },
+      {
+        "source": "72",
+        "target": "6"
+      },
+      {
+        "source": "73",
+        "target": "6"
+      },
+      {
+        "source": "69",
+        "target": "6"
+      },
+      {
+        "source": "74",
+        "target": "6"
+      },
+      {
+        "source": "75",
+        "target": "6"
+      }
+    ],
+    "categories": [
+      {
+        "name": "玄幻"
+      },
+      {
+        "name": "都市"
+      },
+      {
+        "name": "导演"
+      },
+      {
+        "name": "编剧"
+      },
+      {
+        "name": "制片人"
+      },
+      {
+        "name": "演员"
+      }
+    ]
+  }
