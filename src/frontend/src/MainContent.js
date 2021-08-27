@@ -32,9 +32,9 @@ function checkSpecialDate() {
 
 function getDateDiff() {
   const date = new Date();
-  const startDate = new Date("2021-03-01");
+  const startDate = new Date("2021-08-30");
   startDate.setTime(startDate.getTime() + date.getTimezoneOffset() * 60 * 1000);
-  return Math.floor((date - startDate) / (24 * 3600 * 1000));
+  return Math.max(0, Math.floor((date - startDate) / (24 * 3600 * 1000)));
 }
 
 function getTime() {
