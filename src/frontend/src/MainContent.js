@@ -199,7 +199,7 @@ class MainContent extends React.Component {
         ? "https://name1e5s.fun:4514/free_classrooms_jwgl?week="
         : "https://name1e5s.fun:4514/free_classrooms?week=";
       const week = this.state.jwgl ? this.state.realWeek : this.state.week;
-      const day = this.state.jwgl ? this.state.realDay : this.state.day;
+      const day = this.state.day;
       const url = prefix + week + "&day=" + day + this.getTimeString();
       axios
         .get(url)
@@ -427,11 +427,8 @@ class MainContent extends React.Component {
                     <FormSelect
                       id="day"
                       value={this.state.day}
-                      disabled={this.state.jwgl}
                       onChange={(e) => {
-                        if(!this.state.jwgl) {
-                          this.setDay(e.target.value)
-                        }
+                        this.setDay(e.target.value)
                       }}
                     >
                       <option value="1">周一</option>
