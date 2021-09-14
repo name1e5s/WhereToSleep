@@ -89,7 +89,7 @@ class Classroom(object):
 class Sheet(object):
     def __init__(self, file_name: str, sheet_name='Sheet1'):
         workbook = xlrd.open_workbook(file_name)
-        self.sheet = workbook.sheet_by_name(sheet_name)
+        self.sheet = workbook.sheet_by_index(0)
         self.iterator = -1
 
     def reset_iterator(self):
@@ -267,7 +267,7 @@ def main():
     args = parser.parse_args()
     graduate = [] if not args.graduate else args.graduate
     classrooms = get_classrooms(args.classroom, graduate)
-    filtered = filter_classrooms(classrooms, function_allow_list=['多媒体'], name_deny_list=['教师自行安排', '网络教室', '体育'])
+    filtered = filter_classrooms(classrooms, function_allow_list=['多媒体'], name_deny_list=['教师自行安排', '网络教室', '体育', '虚拟'])
     result = get_free_classroom_dict(get_classroom_dict(filtered))
     with open(args.output, mode='w', encoding='utf-8') as f:
         json.dump(result, f, indent=4, ensure_ascii=False)

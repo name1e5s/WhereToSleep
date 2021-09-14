@@ -39,19 +39,7 @@ function getDateDiff() {
 
 function getTime() {
   const array = [
-    845,
-    935,
-    1035,
-    1125,
-    1215,
-    1345,
-    1435,
-    1530,
-    1625,
-    1720,
-    1810,
-    1915,
-    2005,
+    845, 935, 1035, 1125, 1215, 1345, 1435, 1530, 1625, 1720, 1810, 1915, 2005,
     2055,
   ];
   const now = new Date();
@@ -172,13 +160,13 @@ class MainContent extends React.Component {
     this.setState({ selected: sel });
   }
 
-  rangeChecked() {
+  rangeChecked(jwgl) {
     if (this.state.jwgl_has_data) {
-      this.setState({ jwgl: !this.state.jwgl });
+      this.setState({ jwgl: jwgl });
     }
     const dateDiff = getDateDiff();
-    this.setWeek("" + getWeek(dateDiff),);
-    this.setDay("" + getDay(dateDiff),);
+    this.setWeek("" + getWeek(dateDiff));
+    this.setDay("" + getDay(dateDiff));
   }
 
   getTimeString() {
@@ -381,14 +369,28 @@ class MainContent extends React.Component {
                 <Form>
                   <FormGroup>
                     <label htmlFor="mode">数据来源</label>
-                    <FormCheckbox
-                      toggle
-                      checked={this.state.jwgl}
-                      disabled={!this.state.jwgl_has_data}
-                      onChange={this.rangeChecked}
-                    >
-                      {this.state.jwgl ? "教务系统" : "课表/考表"}
-                    </FormCheckbox>
+                    <ButtonToolbar className="w-100">
+                      <ButtonGroup size="sm" className="d-flex w-100">
+                        <Button
+                          theme={!this.state.jwgl ? "primary" : "light"}
+                          onClick={(e) => {
+                            this.rangeChecked(false);
+                          }}
+                          disabled={!this.state.jwgl_has_data}
+                        >
+                          课表/考表
+                        </Button>
+                        <Button
+                          theme={this.state.jwgl ? "primary" : "light"}
+                          onClick={(e) => {
+                            this.rangeChecked(true);
+                          }}
+                          disabled={!this.state.jwgl_has_data}
+                        >
+                          教务系统
+                        </Button>
+                      </ButtonGroup>
+                    </ButtonToolbar>
                   </FormGroup>
                   <FormGroup>
                     <label htmlFor="week">周次</label>
@@ -397,8 +399,8 @@ class MainContent extends React.Component {
                       value={this.state.week}
                       disabled={this.state.jwgl}
                       onChange={(e) => {
-                        if(!this.state.jwgl) {
-                          this.setWeek(e.target.value)
+                        if (!this.state.jwgl) {
+                          this.setWeek(e.target.value);
                         }
                       }}
                     >
@@ -428,7 +430,7 @@ class MainContent extends React.Component {
                       id="day"
                       value={this.state.day}
                       onChange={(e) => {
-                        this.setDay(e.target.value)
+                        this.setDay(e.target.value);
                       }}
                     >
                       <option value="1">周一</option>
