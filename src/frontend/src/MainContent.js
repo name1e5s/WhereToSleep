@@ -16,6 +16,8 @@ import {
   FormCheckbox,
 } from "shards-react";
 import axios from "axios";
+import jwgl_has_data from "./data/jwgl_has_data.json";
+import jwgl from "./data/jwgl.json";
 
 const specialDate = [
   "2020-10-04",
@@ -106,6 +108,78 @@ function getRealDay(dateDiff) {
   return Math.floor(dateDiff % 7) + 1;
 }
 
+function getSingleResult(week, day, time) {
+  let week_prefix = week < 10 ? "0" : "";
+  let time_prefix = time < 10 ? "0" : "";
+  let key = week_prefix + week + "." + day + "." + time_prefix + time;
+  var s = new Set();
+  let result = jwgl[key];
+  //console.log(key);
+  //console.log(result);
+  for (const building in result) {
+    result[building].forEach((room) => {
+      let t = {
+        "building": building,
+        "name": room["name"],
+        "function": room["function"],
+        "seats": room["seats"],
+      };
+      s.add(JSON.stringify(t));
+    })
+  }
+  return s;
+}
+
+function intersection(setA, setB) {
+  let _intersection = new Set()
+  for (let elem of setB) {
+      if (setA.has(elem)) {
+          _intersection.add(elem)
+      }
+  }
+  return _intersection
+}
+
+function compat(data) {
+  var map = new Map();
+  for (let room of data) {
+    let item = JSON.parse(room);
+    let building = item["building"];
+    let info = {
+        "name": item["name"],
+        "function": item["function"],
+        "seats": item["seats"],
+    };
+    if (map.has(building)) {
+      map.get(building).push(info);
+    } else {
+      map.set(building, [info]);
+    }
+  }
+  var result = [];
+  map.forEach((value, key) => {
+    result.push({
+      "building": key,
+      "classrooms": value,
+    });
+  })
+  return result;
+}
+
+function getMultipleResult(week, day, times) {
+  if (times.length === 0) {
+    alert("请选择一个时间段");
+  } else if (times.length === 1) {
+    return compat(getSingleResult(week, day, times[0]));
+  } else {
+    let result = getSingleResult(week, day, times[0]);
+    for (let i = 1; i < times.length; i++) {
+      result = intersection(result, getSingleResult(week, day, times[i]));
+    }
+    return compat(result);
+  }
+}
+
 class MainContent extends React.Component {
   constructor(props) {
     super(props);
@@ -122,11 +196,8 @@ class MainContent extends React.Component {
       result: [],
     };
 
-    const jwgl_status_url = "https://name1e5s.fun:4514/jwgl_has_data";
-    axios.get(jwgl_status_url).then((res) => {
-      this.setState({ jwgl_has_data: res.data.result });
-      this.setState({ jwgl: res.data.result });
-    });
+    this.setState({ jwgl_has_data: jwgl_has_data.has_data });
+    this.setState({ jwgl: jwgl_has_data.has_data });
 
     this.setWeek = this.setWeek.bind(this);
     this.setDay = this.setDay.bind(this);
@@ -179,17 +250,29 @@ class MainContent extends React.Component {
     return time_string;
   }
 
+  getTimes() {
+    var result = []
+    for (var i = 0; i < 15; i++) {
+      if (this.state.selected[i]) {
+        result.push(i - 1);
+      }
+    }
+    return result;
+  }
+
   getNewResult() {
     if (!this.state.selected.reduce((a, b) => a || b)) {
       alert("请至少点选一个时间段");
     } else {
+      /*
       const prefix = this.state.jwgl
-        ? "https://name1e5s.fun:4514/free_classrooms_jwgl?week="
-        : "https://name1e5s.fun:4514/free_classrooms?week=";
+        ? "https://name1e5s.fun:6324/free_classrooms_jwgl?week="
+        : "https://name1e5s.fun:6324/free_classrooms?week=";*/
       const week = this.state.jwgl ? this.state.realWeek : this.state.week;
       const day = this.state.day;
-      const url = prefix + week + "&day=" + day + this.getTimeString();
-      axios
+      //const url = prefix + week + "&day=" + day + this.getTimeString();
+      this.setState({ result: getMultipleResult(week, day - 1, this.getTimes()) });
+      /*axios
         .get(url)
         .then((res) => {
           this.setState({ result: res.data });
@@ -201,7 +284,7 @@ class MainContent extends React.Component {
         })
         .catch((error) => {
           alert("网络故障\nPS：最近校园网不稳定，可以切换到流量后再试试");
-        });
+        });*/
     }
   }
 
@@ -364,6 +447,11 @@ class MainContent extends React.Component {
         <Row>
           {this.renderAlert()}
           <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
+          <Alert theme="primary">
+            <b>后端服务器因为没有备案被橄榄了，暂时先把数据存在前端，寒假重写</b>
+          </Alert>
+        </Col>
+          <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
             <Card>
               <CardBody>
                 <Form>
@@ -376,7 +464,7 @@ class MainContent extends React.Component {
                           onClick={(e) => {
                             this.rangeChecked(false);
                           }}
-                          disabled={!this.state.jwgl_has_data}
+                          disabled={true}
                         >
                           课表/考表
                         </Button>
