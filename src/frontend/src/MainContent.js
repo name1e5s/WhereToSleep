@@ -485,9 +485,9 @@ class MainContent extends React.Component {
                     <FormSelect
                       id="week"
                       value={this.state.week}
-                      disabled={this.state.jwgl}
+                      disabled={false}
                       onChange={(e) => {
-                        if (!this.state.jwgl) {
+                        if (true) {
                           this.setWeek(e.target.value);
                         }
                       }}
