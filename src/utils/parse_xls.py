@@ -131,14 +131,14 @@ def generate_graduate_schedule_list(graduate_sheet: List[str]) \
         workbook = xlrd.open_workbook(file)
         sheet = workbook.sheet_by_index(0)
         for i in range(1, sheet.nrows):
-            temp = get_single_graduate_tuple(sheet.row_values(i)[5])
+            temp = get_single_graduate_tuple(sheet.row_values(i)[7])
             if temp:
                 schedule_list.append(temp)
     return schedule_list
 
 
 def get_single_graduate_tuple(value) -> Tuple[int, Tuple[int, int], Tuple[Tuple[int, int], int], str] | None:
-    if value.strip().startswith('参见'):
+    if value.strip().startswith('参见') or value.strip().startswith('查看'):
         return None
     real_data = re.findall(r'^([^;]*)\((\d*-\d*)节\)\[(.*)]', value)
     if len(real_data) != 1 or len(real_data[0]) != 3:

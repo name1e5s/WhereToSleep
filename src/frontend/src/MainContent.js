@@ -448,7 +448,7 @@ class MainContent extends React.Component {
           {this.renderAlert()}
           <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
           <Alert theme="primary">
-            <b>后端服务器因为没有备案被橄榄了，暂时先把数据存在前端，寒假重写</b>
+            <b><s>后端服务器因为没有备案被橄榄了，暂时先把数据存在前端，寒假重写</s>摸了</b>
           </Alert>
         </Col>
           <Col sm="12" lg={{ size: 8, order: 2, offset: 2 }}>
@@ -460,20 +460,20 @@ class MainContent extends React.Component {
                     <ButtonToolbar className="w-100">
                       <ButtonGroup size="sm" className="d-flex w-100">
                         <Button
-                          theme={!this.state.jwgl ? "primary" : "light"}
+                          theme={this.state.jwgl ? "primary" : "light"}
                           onClick={(e) => {
                             this.rangeChecked(false);
                           }}
-                          disabled={true}
+                          disabled={false}
                         >
                           课表/考表
                         </Button>
                         <Button
-                          theme={this.state.jwgl ? "primary" : "light"}
+                          theme={!this.state.jwgl ? "primary" : "light"}
                           onClick={(e) => {
                             this.rangeChecked(true);
                           }}
-                          disabled={!this.state.jwgl_has_data}
+                          disabled={true}
                         >
                           教务系统
                         </Button>
